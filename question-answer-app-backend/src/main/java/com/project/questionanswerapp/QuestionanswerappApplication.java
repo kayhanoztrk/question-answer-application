@@ -16,7 +16,6 @@ import org.springframework.context.annotation.ComponentScan;
 import java.time.LocalDate;
 import java.util.Date;
 
-//@ComponentScan(basePackages = {"com.project.questionanswerapp.*"})
 @SpringBootApplication(scanBasePackages = "com.project.questionanswerapp.*")
 public class QuestionanswerappApplication implements CommandLineRunner {
 
@@ -39,7 +38,6 @@ public class QuestionanswerappApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user = new User();
-        //user.setId(6L);
         user.setUsername("Kayhan");
         user.setPassword("ozturk");
 
