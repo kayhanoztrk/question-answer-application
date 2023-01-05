@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: question-answer-app
+spec:
+  selector:
+    matchLabels:
+      app: question-answer-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: question-answer-app
+    spec:
+      containers:
+        - name: question-answer-app
+          image: devkayhan/question-answer-app:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 200m
+              memory: 1Gi
+            limits:
+              cpu: 1
+              memory: 1Gi
