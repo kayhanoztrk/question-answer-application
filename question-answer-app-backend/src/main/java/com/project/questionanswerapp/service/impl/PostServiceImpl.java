@@ -19,6 +19,7 @@ import com.project.questionanswerapp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -36,27 +37,17 @@ public class PostServiceImpl implements PostService {
 
     private static final Logger logger = LoggerFactory.getLogger(PostServiceImpl.class);
 
-    private final PostRepository postRepository;
-    private final PostRespMapper postRespMapper;
-    private final UserRespMapper userRespMapper;
-    private final UserService userService;
+    @Autowired
+    private PostRepository postRepository;
+    @Autowired
+    private PostRespMapper postRespMapper;
+    @Autowired
+    private UserRespMapper userRespMapper;
+    @Autowired
+    private UserService userService;
+    @Autowired
     private LikeService likeService;
 
-    public PostServiceImpl(PostRepository postRepository,
-                           PostRespMapper postRespMapper,
-                           UserRespMapper userRespMapper,
-                           UserService userService) {
-
-        this.postRepository = postRepository;
-        this.postRespMapper = postRespMapper;
-        this.userRespMapper = userRespMapper;
-        this.userService = userService;
-    }
-
-    @Autowired
-    public void setLikeService(LikeService likeService) {
-        this.likeService = likeService;
-    }
 
     @Override
     public List<PostResponse> findAll() {

@@ -6,6 +6,8 @@ import com.project.questionanswerapp.model.request.PostUpdateRequest;
 import com.project.questionanswerapp.service.PostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +26,8 @@ import java.util.Optional;
 public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
-    private final PostService postService;
-
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
+    @Autowired
+    private PostService postService;
 
     @GetMapping("/getAll")
     public ResponseEntity<List<PostResponse>> findAll() {
